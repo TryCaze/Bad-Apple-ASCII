@@ -4,7 +4,7 @@ import threading
 from playsound import playsound
 
 def play_sound():
-    playsound("music/badapple.mp4")
+    playsound("music/badapple.mp3")
 
 def load_ascii_frames(ascii_folder):
     frames = []
