@@ -18,18 +18,17 @@ def load_ascii_frames(ascii_folder):
 
 def animate_ascii_art(frames, total_duration=219):
     num_frames = len(frames)
-    frame_time = total_duration / num_frames  # More precise frame delay
+    frame_time = total_duration / num_frames
 
-    start_time = time.monotonic()  # Get a precise start time
+    start_time = time.monotonic()
 
     try:
         for i, frame in enumerate(frames):
             print(frame)
-            print("\033[H\033[J", end="")  # Fast clear screen
+            print("\033[H\033[J", end="")
 
-            # Calculate when the next frame *should* be shown
             next_frame_time = start_time + (i + 1) * frame_time
-            time.sleep(max(0, next_frame_time - time.monotonic()))  # Ensure correct timing
+            time.sleep(max(0, next_frame_time - time.monotonic()))
 
     except KeyboardInterrupt:
         print("\nThe animation was fucking shot")
@@ -39,5 +38,5 @@ sound_thread = threading.Thread(target=play_sound, daemon=True)
 sound_thread.start()
 
 frames = load_ascii_frames('ASCIIframes')
-animate_ascii_art(frames, total_duration=219)  # Total duration in seconds
+animate_ascii_art(frames, total_duration=219)
 
